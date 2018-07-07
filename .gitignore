@@ -1,0 +1,7 @@
+*.aux
+*.log
+*.out
+*-converted-to.pdf
+simple.dot
+simple.svg
+*.eps
