@@ -112,40 +112,47 @@
   }
   \column{0.5}
   \block{Native Variant Editing}{
-    \parbox[t]{35.7cm}{%
 
-      LanguageConverter is oriented to readers: it converts the
-      article text unidirectionally into readable text in a consistent
-      variant.  But as soon as a user begins to edit, they are
-      confronted with the source text in a mix of variants, as
-      illustrated by the intermingled Cyrillic and Latin scripts
-      in this article from Serbian Wikipedia to the right.  This
-      mixture of scripts can be a huge barrier to editing in
-      communities where individuals are typically only fluent in
-      a single variant.
+    LanguageConverter is oriented to readers: it converts the article
+    text unidirectionally into readable text in a consistent variant.
+    But as soon as a user begins to edit, they are confronted with the
+    source text in a mix of variants, as illustrated by the
+    intermingled Cyrillic and Latin scripts in the article from
+    Serbian Wikipedia shown below.  This mixture of scripts can be a
+    huge barrier to editing in communities where individuals are
+    typically only fluent in a single variant.
 
-      The Parsoid team has been experimenting with a new
-      bidirectional implementation of LanguageConverter, based
-      on Finite State Transducers (FSTs).  These allow automatic
-      annotation of wikitext such that it can be round-tripped
-      to its original variant losslessly.  With these annotations,
-      an Wikimedian can edit an article in their preferred consistent
-      variant.
+    The Parsoid team has been experimenting with a new bidirectional
+    implementation of LanguageConverter, based on Finite State
+    Transducers (FSTs).  These allow automatic annotation of wikitext
+    such that it can be round-tripped to its original variant
+    losslessly.  With these annotations, an Wikimedian can edit an
+    article in their preferred consistent variant.
 
-    }\quad%
-    \includegraphics[width=18cm,valign=t]{mixed-edit-2.png}
-    \vspace{0.25cm}
+    Unedited portions of the article will round-trip to their original
+    variant, preventing dirty diffs, and only edited sections will
+    reflect the variant which the editor saw.  On wikis where the
+    community has chosen to author all articles in a single variant,
+    all text can be losslessly saved as the chosen variant, regardless
+    of which variant the editor used.
 
-      Unedited portions of the article will round-trip to
-      their original variant, preventing dirty diffs, and only edited
-      sections will reflect the variant which the editor saw.
-      On wikis where the community has chosen to author all articles
-      in a single variant, all text can be losslessly saved as the
-      chosen variant, regardless of which variant the editor used.
+    \begin{center}
+    \textbf{We can make editing easier on wikis using LanguageConverter!}
+    \end{center}
 
-      \begin{tikzfigure}[Partial FST for Serbian Cyrillic-to-Latin conversion]
-        \includegraphics[width=18cm]{simple.eps}
-      \end{tikzfigure}
+    \begin{tikzfigure}
+      \includegraphics[height=18cm,valign=T]{mixed-edit-2.png}
+      \hspace{7cm}
+      \includegraphics[height=18cm,valign=T]{simple.eps}
+
+      \vspace{0.75cm}
+
+      \parbox[t]{26cm}{Serbian Wikipedia article showing mixed
+        Cyrillic/Latin script}
+      \hspace{2cm}
+      \parbox[t]{22cm}{Partial FST for Serbian Cyrillic-to-Latin
+        conversion}
+    \end{tikzfigure}
   }
   \block{Translation Suggestion Tool}{
     lala
