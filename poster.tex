@@ -16,15 +16,35 @@
 % remove space taken up by \institute
 \settitle{ \centering \vbox{
 \centering
-\color{titlefgcolor} {\bfseries \Huge \sc \@title \par}
+\color{titlefgcolor} {\bfseries \huge \sc \@title \par}
 \vspace*{1em}
-{\huge \@author}
+{\huge
+  \@author}
 }}
 
 % Work around tikzposter conflict with hyperref
 % https://tex.stackexchange.com/questions/254257/tikzposter-and-doi-package-conflict
 \def\HyperFirstAtBeginDocument#1{#1}
-\begin{document}\maketitle[width=90cm]%[titletextscale=1,width=75cm]
+\begin{document}\maketitle[width=90cm,titletotopverticalspace=0.5cm,titletoblockverticalspace=1cm]
+\block{}{\centering
+  Instead of today's many siloed wikis, separated by language and
+  project, we aspire to re-establish a unified community of
+  collaborators in the spirit of ubuntu. We will still respect
+  language and cultural differences---there will still be English,
+  German, Hebrew, Arabic, etc. Wikipedias; they will disagree at
+  times---but
+  instead of separate domains, we propose a single user
+  experience with integrated navigation between projects and languages
+  and the possibility of split screen views aligning related
+  content. On a single page we can work on articles in different
+  languages, or simultaneously edit textbook content and encyclopedia
+  articles. Via machine translation we can facilitate conversations
+  and collaborations spanning languages and projects, without forcing
+  a single culture or perspective.
+  %The improvements made to the
+  %project by each community can be shared with all others to improve
+  %the sum of all knowledge.
+  }
 \begin{columns}
   \column{0.5}
   \newlength{\myfigwidth}
@@ -36,9 +56,9 @@
     MediaWiki uses
     \href{https://www.mediawiki.org/wiki/Writing_systems\#LanguageConverter}{[[mw:LanguageConverter]]}
     to automatically transliterate articles between closely related
-    languages or dialects or script variants of a language or dialect.
+    languages/dialects or script variants of a language/dialect.
     It is used on 11 wikis, and has been requested on about 35 more.
-    Here are some examples of conversion pairs:
+    Some examples of conversion pairs:
 
     \innerblock{%
       \raisebox{0pt}[0pt][0pt]{\parbox{13cm}{\raggedright%
@@ -96,7 +116,7 @@
           Urdu and Hindi are dialects of the Hindustani language,
           written in very different scripts: Arabic on the Pakistan
           side of the border, Devanagri on the India side.
-          (Punjabi is a similar case, with four scripts used.)
+%          (Punjabi is a similar case, with four scripts used.)
 
           Currently separate small wikis; could combine efforts.
         }}%
@@ -105,7 +125,7 @@
       \hspace{\myfiggap}%
       \includegraphics[valign=T,width=\myfigwidth]{variants-ur.eps}%
 
-      \vspace{3cm}
+      \vspace{0.5cm}
     }
 
     %\small LanguageConverter brings our wikis together!
@@ -141,9 +161,9 @@
     \end{center}
 
     \begin{tikzfigure}
-      \includegraphics[height=18cm,valign=T]{mixed-edit-2.png}
-      \hspace{7cm}
-      \includegraphics[height=18cm,valign=T]{simple.eps}
+      \includegraphics[height=17.3cm,valign=T]{mixed-edit-2.png}
+      \hspace{7.5cm}
+      \includegraphics[height=17.3cm,valign=T]{simple.eps}
 
       \vspace{0.75cm}
 
@@ -155,10 +175,34 @@
     \end{tikzfigure}
   }
   \block{Translation Suggestion Tool}{
-    lala
+
+    A translation suggestion tool \textbf{suggests an edit in one
+      language whenever an edit is made to a parallel text in another
+      language}.  Correspondences are
+    \href{https://www.mediawiki.org/wiki/Content_translation/Published_translations\#Parallel_corpora}{manually created}
+    via the Content Translation tool or
+    \href{http://www.statmt.org/wmt17/bandit-learning-task.html}{``bandit learning''},
+    and machine translation is used to automatically
+    create new (or prune old) correspondences.
+
+    \centering
+    Related work: \url{https://research.wikimedia.org/knowledge-gaps.html}
   }
   \block{Zero-Shot Translation}{
-    lala
+
+    ``Zero-shot translation'' machine translation models \textbf{allow
+      training data from ``big'' wikis to improve the translation of
+      ``small'' wikis}. Every contributed correspondence or
+    translation further improves the ability of our tools to make
+    additional articles from other languages available.
+
+    \centering
+    More information: \url{https://arxiv.org/pdf/1611.04558.pdf}
+
+  }
+  \block{}{\centering\bf
+    By bridging languages, our individual contributions can better fill
+    knowledge gaps everywhere.
   }
 \end{columns}
 \end{document}
