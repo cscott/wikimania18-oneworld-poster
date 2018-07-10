@@ -1,26 +1,117 @@
 \documentclass[25pt, a0paper, landscape, cmyk]{tikzposter}
+% Fontspec changes the metrics slightly (!)
+%\usepackage{fontspec}%\setsansfont{Montserrat Black}
+% Use a simpler package instead
+\input font-change-xetex
+\mysanzfont{Montserrat Black}{30}{letterspace=6}
 \usepackage[Export]{adjustbox}
 \usepackage[colorlinks,allcolors=blue]{hyperref}
 \tikzposterlatexaffectionproofoff
-\title{One World, One Wiki!}
+\title{One World, One Wiki}
 \author{%
   C. Scott Ananian
   <cananian@wikimedia.org>
   \texttt{[[User:cscott]]}
   (Wikimedia Foundation)
 }
-%\usetheme{Autumn}\usecolorstyle[colorPalette=BrownBlueOrange]{Britain}
-%\usetheme{Envelope}
-\usetheme{Rays}\usecolorstyle[colorOne=green,colorTwo=orange]{Australia}
+\definecolorpalette{Wikimania2018}{
+  % Red: 213 0 0 = D50000
+  % Yellow: 255 193 7 = FFC107
+  % Green: 0 174 66 = 00AE42
+  \definecolor{colorOne}{HTML}{000000} % Black
+  \definecolor{colorTwo}{HTML}{FFC107} % Yellow
+  \definecolor{colorThree}{HTML}{D50000} % Red
+  \definecolor{colorFour}{HTML}{00AE42} % Green
+}
+\definecolorstyle{CapeTown}{
+  \definecolor{colorOne}{HTML}{FFC107}
+  \definecolor{colorTwo}{HTML}{00AE42}
+  \definecolor{colorThree}{HTML}{D50000}
+}{  % Background Colors
+    \colorlet{backgroundcolor}{colorOne}
+    \colorlet{framecolor}{colorThree}
+    % Title Colors
+    \colorlet{titlefgcolor}{black}
+    \colorlet{titlebgcolor}{white}
+    % Block Colors
+    \colorlet{blocktitlebgcolor}{colorTwo}
+    \colorlet{blocktitlefgcolor}{black}
+    \colorlet{blockbodybgcolor}{white}
+    \colorlet{blockbodyfgcolor}{black}
+    % Innerblock Colors
+    \colorlet{innerblocktitlebgcolor}{colorFour}
+    \colorlet{innerblocktitlefgcolor}{black}
+    \colorlet{innerblockbodybgcolor}{white}
+    \colorlet{innerblockbodyfgcolor}{black}
+    % Note colors
+    \colorlet{notefgcolor}{black}
+    \colorlet{notebgcolor}{colorThree}
+    \colorlet{notefrcolor}{colorThree}
+}
+\definecolorstyle{CapeTown2}{
+  \definecolor{colorOne}{HTML}{FFC107}
+  \definecolor{colorTwo}{HTML}{00AE42}
+  \definecolor{colorThree}{HTML}{D50000}
+}{  % Background Colors
+    \colorlet{backgroundcolor}{colorTwo}
+    \colorlet{framecolor}{colorThree}
+    % Title Colors
+    \colorlet{titlefgcolor}{black}
+    \colorlet{titlebgcolor}{white}
+    % Block Colors
+    \colorlet{blocktitlebgcolor}{colorOne}
+    \colorlet{blocktitlefgcolor}{colorTwo}
+    \colorlet{blockbodybgcolor}{white}
+    \colorlet{blockbodyfgcolor}{black}
+    % Innerblock Colors
+    \colorlet{innerblocktitlebgcolor}{colorFour}
+    \colorlet{innerblocktitlefgcolor}{black}
+    \colorlet{innerblockbodybgcolor}{white}
+    \colorlet{innerblockbodyfgcolor}{black}
+    % Note colors
+    \colorlet{notefgcolor}{black}
+    \colorlet{notebgcolor}{colorThree}
+    \colorlet{notefrcolor}{colorThree}
+}
+\definecolorstyle{CapeTown3}{
+  \definecolor{colorOne}{HTML}{FFC107}
+  \definecolor{colorTwo}{HTML}{00AE42}
+  \definecolor{colorThree}{HTML}{D50000}
+}{  % Background Colors
+    \colorlet{backgroundcolor}{colorFour}
+    \colorlet{framecolor}{colorThree}
+    % Title Colors
+    \colorlet{titlefgcolor}{black}
+    \colorlet{titlebgcolor}{white}
+    % Block Colors
+    \colorlet{blocktitlebgcolor}{colorOne}
+    \colorlet{blocktitlefgcolor}{colorTwo}
+    \colorlet{blockbodybgcolor}{white}
+    \colorlet{blockbodyfgcolor}{black}
+    % Innerblock Colors
+    \colorlet{innerblocktitlebgcolor}{colorTwo}
+    \colorlet{innerblocktitlefgcolor}{black}
+    \colorlet{innerblockbodybgcolor}{white}
+    \colorlet{innerblockbodyfgcolor}{black}
+    % Note colors
+    \colorlet{notefgcolor}{black}
+    \colorlet{notebgcolor}{colorThree}
+    \colorlet{notefrcolor}{colorThree}
+}
+
+
+\usetheme{Default}
+\usecolorstyle[colorPalette=Wikimania2018]{CapeTown2}
 \useinnerblockstyle{Table}
+
 % remove space taken up by \institute
 \settitle{ \centering \vbox{
 \centering
-\color{titlefgcolor} {\bfseries \huge \sc \@title \par}
+\color{titlefgcolor} {\sanstwentycaps \@title \par}
 \vspace*{1em}
-{\huge
-  \@author}
+{\huge \@author}
 }}
+\newcommand{\myb}[1]{\sanssixteencaps #1}
 
 % Work around tikzposter conflict with hyperref
 % https://tex.stackexchange.com/questions/254257/tikzposter-and-doi-package-conflict
@@ -51,7 +142,7 @@
   \setlength{\myfigwidth}{0.34\colwidth}
   \newlength{\myfiggap}
   \setlength{\myfiggap}{1.5cm}
-  \block{Language Converter}{
+  \block{\myb{Language Converter}}{
 
     MediaWiki uses
     \href{https://www.mediawiki.org/wiki/Writing_systems\#LanguageConverter}{[[mw:LanguageConverter]]}
@@ -131,7 +222,7 @@
     %\small LanguageConverter brings our wikis together!
   }
   \column{0.5}
-  \block{Native Variant Editing}{
+  \block{\myb{Native Variant Editing}}{
 
     LanguageConverter is oriented to readers: it converts the article
     text unidirectionally into readable text in a consistent variant.
@@ -161,9 +252,9 @@
     \end{center}
 
     \begin{tikzfigure}
-      \includegraphics[height=17.3cm,valign=T]{mixed-edit-2.png}
+      \includegraphics[height=17.25cm,valign=T]{mixed-edit-2.png}
       \hspace{7.5cm}
-      \includegraphics[height=17.3cm,valign=T]{simple.eps}
+      \includegraphics[height=17.25cm,valign=T]{simple.eps}
 
       \vspace{0.75cm}
 
@@ -174,7 +265,7 @@
         conversion}
     \end{tikzfigure}
   }
-  \block{Translation Suggestion Tool}{
+  \block{\myb{Translation Suggestion Tool}}{
 
     A translation suggestion tool \textbf{suggests an edit in one
       language whenever an edit is made to a parallel text in another
@@ -188,7 +279,7 @@
     \centering
     Related work: \url{https://research.wikimedia.org/knowledge-gaps.html}
   }
-  \block{Zero-Shot Translation}{
+  \block{\myb{Zero-Shot Translation}}{
 
     ``Zero-shot translation'' machine translation models \textbf{allow
       training data from ``big'' wikis to improve the translation of

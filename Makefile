@@ -3,7 +3,7 @@ poster.pdf: poster.tex simple.eps \
 	variants-sr-ec.eps variants-sr-el.eps \
 	variants-zh-cn.eps variants-zh-tw.eps \
 	variants-hi.eps variants-ur.eps
-	pdflatex $<
+	xelatex $<
 simple.dot: simple.foma
 	foma -f $<
 simple.svg: simple.dot
